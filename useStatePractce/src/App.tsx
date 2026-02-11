@@ -1,26 +1,20 @@
-import { useEffect, useState } from 'react';
+
+import { useState } from "react";
+import Navbar from './Components/Navbar';
+import Cart from './Components/Cart';
 
 
 
-function Demo() {
-  const [count, setCount] = useState(0);
+const App = () => {
+const [CartItems, setCartItems] = useState(['product 3','product1', 'product2'])
 
-  useEffect(() => {
-    console.log('The count is' + count)
-  
-    return () => {
-      console.log("its just a clean up console")
-    }
-  }, [count])
   return (
     <div>
-   <h1> Count : {count}</h1>
-   <button onClick={()=> setCount(count + 1)}>Increment</button> <span> </span>
-   <button onClick={()=> setCount(count - 1)}>Decrement</button>
+      <Navbar cartItemsCount={CartItems.length}/>
+      <Cart CartItems={CartItems} OnClear={() => setCartItems([])}/>
+      
     </div>
-  
   )
 }
 
-export default Demo;
- 
+export default App
